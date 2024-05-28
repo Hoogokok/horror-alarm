@@ -25,9 +25,9 @@ class NetflixExpiredServiceTest {
     void getNetflixExpiredResponse() {
         // given
         netflixHorrorExpiredEnRepository.save(
-            new NetflixHorrorExpiredEn(LocalDate.of(2021, 10, 1), 1L));
+            new NetflixHorrorExpiredEn(LocalDate.of(2024, 10, 1), 1L));
         netflixHorrorExpiredEnRepository.save(
-            new NetflixHorrorExpiredEn(LocalDate.of(2021, 10, 2), 2L));
+            new NetflixHorrorExpiredEn(LocalDate.of(2024, 10, 2), 2L));
         netflixHorrorKrRepository.save(
             new NetflixHorrorKr("title1", 1L, "overview1", "posterPath1"));
         netflixHorrorKrRepository.save(

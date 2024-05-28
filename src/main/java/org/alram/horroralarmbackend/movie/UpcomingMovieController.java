@@ -1,4 +1,4 @@
-package org.alram.horroralarmbackend.upcoming;
+package org.alram.horroralarmbackend.movie;
 
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ public class UpcomingMovieController {
     }
 
     @GetMapping("/api/upcoming")
-    public ResponseEntity<List<UpcomingMovieRequest>> upcoming() {
+    public ResponseEntity<List<UpcomingMovieResponse>> upcoming() {
         return ResponseEntity.ok(upComingMovieService.findUpcomingMovieByDate());
     }
 }

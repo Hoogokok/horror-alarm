@@ -1,4 +1,4 @@
-package org.alram.horroralarmbackend.upcoming;
+package org.alram.horroralarmbackend.movie;
 
 import jakarta.transaction.Transactional;
 import java.time.LocalDate;
@@ -16,13 +16,13 @@ public class UpcomingMovieService {
         this.upComingMovieRepository = upComingMovieRepository;
     }
 
-    public List<UpcomingMovieRequest> findUpcomingMovieByDate() {
+    public List<UpcomingMovieResponse> findUpcomingMovieByDate() {
         String today = LocalDate.now().toString();
         List<UpcomingMovie> upcomingMovies = upComingMovieRepository.findByReleaseDateAfter(today);
         return upcomingMovies.stream()
             .sorted(Comparator.comparing(UpcomingMovie::getReleaseDate))
             .map(upcomingMovie ->
-                new UpcomingMovieRequest(
+                new UpcomingMovieResponse(
                     upcomingMovie.getId(),
                     upcomingMovie.getTitle(),
                     upcomingMovie.getReleaseDate(),
