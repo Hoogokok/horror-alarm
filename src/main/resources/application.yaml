@@ -1,4 +1,15 @@
 spring:
+  profiles:
+    group:
+      local: local
+      test: test
+      production: production
+    default: production
+---
+spring:
+  config:
+    activate:
+      on-profile: local
   datasource:
     url: ${DATASOURCE_URL}
     username: ${DATASOURCE_USERNAME}
@@ -27,4 +38,84 @@ spring:
       org:
         hibernate:
           type: trace
+  graphql:
+    cors:
+      allowed-origins: ${CORS_ALLOWED_ORIGINS}
+      allowed-headers: ${CORS_ALLOWED_HEADERS}
+      allowed-methods: ${CORS_ALLOWED_METHODS}
+
+server:
+  port: ${PORT}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: production
+    datasource:
+      url: ${DATASOURCE_URL}
+      username: ${DATASOURCE_USERNAME}
+      password: ${DATASOURCE_PASSWORD}
+      driver-class-name: org.postgresql.Driver
+
+    applicationname: 'horror-alarm-backend'
+    jpa:
+      hibernate:
+        ddl-auto: update
+      database: postgresql
+      show-sql: true
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          format_sql: true
+          default_schema: public
+          jdbc:
+            lob:
+              non_contextual_creation: true
+
+    logging:
+      level:
+        org:
+        hibernate:
+          type: trace
+
+graphql:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS}
+    allowed-headers: ${CORS_ALLOWED_HEADERS}
+    allowed-methods: ${CORS_ALLOWED_METHODS}
+
+server:
+  port: ${PORT}
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+
+
+  graphql:
+    cors:
+      allowed-origins: "http://localhost:3000"
+      allowed-headers: "Content-Type, Authorization"
+      allowed-methods: "GET, POST, OPTIONS"
+
+server:
+  port: 8080
+
+
+
 

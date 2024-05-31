@@ -1,4 +1,4 @@
-package org.alram.horroralarmbackend.upcoming;
+package org.alram.horroralarmbackend.movie;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +13,7 @@ public interface UpcomingMovieRepository extends JpaRepository<UpcomingMovie, Lo
     List<UpcomingMovie> findByReleaseDateAfter(@Param("today") String today);
 
     List<UpcomingMovie> findByReleaseDateBetween(String today, String nextWeek);
+
+    @Query("SELECT u FROM UpcomingMovie u WHERE u.releaseDate <= :today")
+    List<UpcomingMovie> findByReleaseDateBefore(@Param("today") String today);
 }

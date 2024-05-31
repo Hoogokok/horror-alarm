@@ -1,4 +1,4 @@
-package org.alram.horroralarmbackend.upcoming;
+package org.alram.horroralarmbackend.movie;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
