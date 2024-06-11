@@ -2,8 +2,8 @@ package org.alram.horroralarmbackend.movie.releasing;
 
 import java.time.LocalDate;
 import java.util.List;
-import org.alram.horroralarmbackend.movie.UpcomingMovie;
-import org.alram.horroralarmbackend.movie.UpcomingMovieRepository;
+import org.alram.horroralarmbackend.movie.upcoming.UpcomingMovie;
+import org.alram.horroralarmbackend.movie.upcoming.UpcomingMovieRepository;
 import org.springframework.stereotype.Service;
 
 @Service

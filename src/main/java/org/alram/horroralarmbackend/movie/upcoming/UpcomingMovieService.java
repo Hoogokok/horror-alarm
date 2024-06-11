@@ -1,4 +1,4 @@
-package org.alram.horroralarmbackend.movie;
+package org.alram.horroralarmbackend.movie.upcoming;
 
 import jakarta.transaction.Transactional;
 import java.time.LocalDate;

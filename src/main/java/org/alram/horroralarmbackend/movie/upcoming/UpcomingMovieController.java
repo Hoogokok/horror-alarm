@@ -1,4 +1,4 @@
-package org.alram.horroralarmbackend.movie;
+package org.alram.horroralarmbackend.movie.upcoming;
 
 import java.util.List;
 import org.springframework.http.ResponseEntity;
