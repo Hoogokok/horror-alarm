@@ -15,7 +15,7 @@ public class ReleasingMovieController {
     }
 
     @GetMapping("/api/releasing")
-    public ResponseEntity<List<ReleasingMovieResponse>> releasing() {
+    public ResponseEntity<List<MovieResponse>> releasing() {
         return ResponseEntity.ok(releasingMovieService.findReleasingMovies());
     }
 }
