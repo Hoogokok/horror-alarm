@@ -1,4 +1,4 @@
-package org.alram.horroralarmbackend.movie.releasing;
+package org.alram.horroralarmbackend.movie;
 
 import java.util.List;
 
