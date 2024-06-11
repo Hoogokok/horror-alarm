@@ -6,8 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
 import org.alram.horroralarmbackend.movie.upcoming.UpcomingMovie;
 
+@Getter
 @Table(name = "movie_theaters")
 @Entity
 public class MovieTheaters {
