@@ -1,10 +1,9 @@
-package org.alram.horroralarmbackend.movie.upcoming;
+package org.alram.horroralarmbackend.movie;
 
 import jakarta.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
-import org.alram.horroralarmbackend.movie.MovieResponse;
 import org.springframework.stereotype.Service;
 
 @Service

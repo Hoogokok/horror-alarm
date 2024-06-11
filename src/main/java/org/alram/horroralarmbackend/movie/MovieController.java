@@ -1,7 +1,6 @@
-package org.alram.horroralarmbackend.movie.upcoming;
+package org.alram.horroralarmbackend.movie;
 
 import java.util.List;
-import org.alram.horroralarmbackend.movie.MovieResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

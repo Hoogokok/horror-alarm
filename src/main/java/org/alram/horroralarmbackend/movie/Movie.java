@@ -1,4 +1,4 @@
-package org.alram.horroralarmbackend.movie.upcoming;
+package org.alram.horroralarmbackend.movie;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 import lombok.NonNull;
-import org.alram.horroralarmbackend.movie.MovieTheaters;
 
 @Table(name = "upcoming_movie")
 @Entity
