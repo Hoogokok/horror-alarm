@@ -15,7 +15,7 @@ import org.alram.horroralarmbackend.movie.MovieTheaters;
 @Table(name = "upcoming_movie")
 @Entity
 @Getter
-public class UpcomingMovie {
+public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,13 +30,19 @@ public class UpcomingMovie {
     @OneToMany(mappedBy = "movieId")
     private final List<MovieTheaters> movieTheaters = new ArrayList<>();
 
-    public UpcomingMovie() {
+    public Movie() {
     }
 
-    public UpcomingMovie(String title, String releaseDate, String poster_path, String overview) {
+    public Movie(String title, String releaseDate, String poster_path, String overview) {
         this.title = title;
         this.releaseDate = releaseDate;
         this.poster_path = poster_path;
         this.overview = overview;
+    }
+
+    public List<String> theatersNames() {
+        return movieTheaters.stream()
+            .map(MovieTheaters::theaterNames)
+            .toList();
     }
 }
