@@ -19,4 +19,9 @@ public class MovieController {
     public ResponseEntity<List<MovieResponse>> upcoming() {
         return ResponseEntity.ok(movieService.findUpcomingMovieByDate());
     }
+
+    @GetMapping("/api/releasing")
+    public ResponseEntity<List<MovieResponse>> releasing() {
+        return ResponseEntity.ok(movieService.findReleasingMovies());
+    }
 }
