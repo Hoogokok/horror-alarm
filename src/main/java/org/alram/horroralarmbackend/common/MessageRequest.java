@@ -1,4 +1,4 @@
-package org.alram.horroralarmbackend.movie;
+package org.alram.horroralarmbackend.common;
 
 public record MessageRequest(String title, String releaseDate){
 
