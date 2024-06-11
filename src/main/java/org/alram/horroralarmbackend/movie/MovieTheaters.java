@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
-import org.alram.horroralarmbackend.movie.upcoming.UpcomingMovie;
 
 @Getter
 @Table(name = "movie_theaters")
@@ -19,7 +18,19 @@ public class MovieTheaters {
     private Long id;
 
     @ManyToOne
-    private UpcomingMovie movieId;
+    private Movie movieId;
     @ManyToOne
     private Theaters theatersId;
+
+    public MovieTheaters() {
+    }
+
+    public MovieTheaters(Movie movieId, Theaters theatersId) {
+        this.movieId = movieId;
+        this.theatersId = theatersId;
+    }
+
+    public String theaterNames() {
+        return theatersId.getName();
+    }
 }
