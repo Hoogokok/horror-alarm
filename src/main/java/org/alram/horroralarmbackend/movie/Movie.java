@@ -44,4 +44,8 @@ public class Movie {
             .map(MovieTheaters::theaterNames)
             .toList();
     }
+
+    public void addTheater(MovieTheaters movieTheaters) {
+        this.movieTheaters.add(movieTheaters);
+    }
 }
