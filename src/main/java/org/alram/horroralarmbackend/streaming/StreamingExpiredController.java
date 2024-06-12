@@ -15,7 +15,7 @@ public class StreamingExpiredController {
 
     @GetMapping("/api/streaming/expired")
     public ExpiredResponse getNetflixExpiredResponse() {
-        return netflixExpiredService.getNetflixExpiredResponse();
+        return netflixExpiredService.nextExpiringNetflixMovie();
     }
 
     @GetMapping("/api/streaming/expired/detail/{id}")

@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
-import org.alram.horroralarmbackend.movie.MessageRequest;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -22,7 +21,7 @@ public class NetflixExpiredService {
         this.netflixHorrorKrRepository = netflixHorrorKrRepository;
     }
 
-    public ExpiredResponse getNetflixExpiredResponse() {
+    public ExpiredResponse nextExpiringNetflixMovie() {
         LocalDate today = LocalDate.now();
         List<NetflixHorrorExpiredEn> expiredDateAsc = netflixHorrorExpiredEnRepository.findFromToday(
             today);
@@ -64,30 +63,5 @@ public class NetflixExpiredService {
             netflixHorrorKr.getPosterPath(),
             netflixHorrorKr.getOverview()
         );
-    }
-
-    public List<MessageRequest> getNetflixExpiredMoviesForTheWeek() {
-        LocalDate today = LocalDate.now();
-        LocalDate nextWeek = today.plusDays(7);
-        List<NetflixHorrorExpiredEn> expiredDateAsc = netflixHorrorExpiredEnRepository
-            .findByExpiredDateBetween(today, nextWeek);
-        List<Long> expiredTheMovieIds = expiredDateAsc.stream()
-            .map(NetflixHorrorExpiredEn::getTheMovieDbId)
-            .toList();
-        List<NetflixHorrorKr> netflixHorrorKrs = netflixHorrorKrRepository.findAllByTheMovieDbIdIn(
-            expiredTheMovieIds);
-
-        return expiredDateAsc.stream()
-            .map(expired -> {
-                NetflixHorrorKr netflixHorrorKr = netflixHorrorKrs.stream()
-                    .filter(kr -> kr.getTheMovieDbId().equals(expired.getTheMovieDbId()))
-                    .findFirst()
-                    .orElseThrow();
-                return new MessageRequest(
-                    netflixHorrorKr.getTitle(),
-                    expired.getExpiredDate().toString()
-                );
-            })
-            .toList();
     }
 }
