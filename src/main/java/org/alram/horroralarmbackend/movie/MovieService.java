@@ -4,8 +4,10 @@ import jakarta.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @Transactional
 public class MovieService {
@@ -19,6 +21,7 @@ public class MovieService {
     public List<MovieResponse> findUpcomingMovieByDate() {
         String today = LocalDate.now().toString();
         List<Movie> movies = movieRepository.findByReleaseDateAfter(today);
+
         return movies.stream()
             .sorted(Comparator.comparing(Movie::getReleaseDate))
             .map(this::convertToReleasingMovieResponse)
@@ -31,6 +34,7 @@ public class MovieService {
             today);
 
         return byReleaseDateBefore.stream()
+            .filter(movie -> !movie.theatersNames().isEmpty())
             .map(this::convertToReleasingMovieResponse)
             .toList();
     }
