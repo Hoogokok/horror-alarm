@@ -21,7 +21,7 @@ public class NetflixExpiredService {
         this.netflixHorrorKrRepository = netflixHorrorKrRepository;
     }
 
-    public ExpiredResponse getNetflixExpiredResponse() {
+    public ExpiredResponse nextExpiringNetflixMovie() {
         LocalDate today = LocalDate.now();
         List<NetflixHorrorExpiredEn> expiredDateAsc = netflixHorrorExpiredEnRepository.findFromToday(
             today);
