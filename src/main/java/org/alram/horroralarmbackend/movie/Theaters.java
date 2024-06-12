@@ -1,6 +1,7 @@
 package org.alram.horroralarmbackend.movie;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -14,6 +15,7 @@ import lombok.Getter;
 public class Theaters {
 
     @Id
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private Long id;
     private String name;
     @OneToMany(mappedBy = "theatersId")
@@ -22,8 +24,7 @@ public class Theaters {
     public Theaters() {
     }
 
-    public Theaters(Long id, String name) {
-        this.id = id;
+    public Theaters(String name) {
         this.name = name;
     }
 }
